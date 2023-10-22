@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  eshopmicroservice:
+    image: ${DOCKER_REGISTRY-}eshopmicroservice
+    build:
+      context: .
+      dockerfile: EshopMicroservice\Dockerfile
+      target: windows

@@ -1,0 +1,35 @@
+name: dockercompose7567852671872200273
+services:
+  eshopmicroservice:
+    build:
+      context: D:\HDV\BTGK2\EshopMicroservice
+      dockerfile: EshopMicroservice\Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: eshopmicroservice
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+      - mode: ingress
+        target: 443
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\ADMIN\AppData\Roaming/Microsoft/UserSecrets
+        target: C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\ADMIN\AppData\Roaming/ASP.NET/Https
+        target: C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose7567852671872200273_default
